@@ -39,6 +39,7 @@ RunAlgorithm::RunAlgorithm(int option) {
 	cout << std::endl << "Enter number to sum to" << endl;
 	cin >> this->number_to_reach;
 	//<---------------------- Start algo -------------------------->
+	bool flag = false;
 	int index = 0, placeholder = 0;
 	Node* n = new Node(this->input, this->number_to_reach, new vector<int>, 0, 0);
 	vector<Node*>* computation = new vector<Node*>;
@@ -71,11 +72,15 @@ RunAlgorithm::RunAlgorithm(int option) {
 		}
 		else
 		{
+			flag = true; // solution found
 			computation->back()->print_solution();
 			break;
 		}
 	}
-
+	if (flag == false)
+	{
+		cout << "A solution was not found " << endl;
+	}
 	while (computation->size() != 0)
 	{
 		delete computation->back();
